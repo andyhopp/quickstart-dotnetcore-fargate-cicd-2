@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
-<title>.NET CI/CD pipeline with delivery to AWS Fargate on the AWS Cloud</title>
+<meta name="generator" content="Asciidoctor 2.0.15">
+<title>.NET Core CI/CD pipeline with delivery to AWS Fargate on the AWS Cloud</title>
 <style>
 
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -825,7 +825,7 @@ p.footer-text a{color:#d7d8d8}
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#_overview">Overview</a></li>
-<li><a href="#_net_cicd_pipeline_with_delivery_to_aws_fargate_on_aws">.NET CI/CD pipeline with delivery to AWS Fargate on AWS</a></li>
+<li><a href="#_net_core_cicd_pipeline_with_delivery_to_aws_fargate_on_aws">.NET Core CI/CD pipeline with delivery to AWS Fargate on AWS</a></li>
 <li><a href="#_aws_costs">AWS costs</a></li>
 <li><a href="#_software_licenses">Software licenses</a></li>
 <li><a href="#_architecture">Architecture</a></li>
@@ -847,7 +847,6 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_faq">FAQ</a></li>
 <li><a href="#_troubleshooting">Troubleshooting</a></li>
 <li><a href="#_customer_responsibility">Customer responsibility</a></li>
-<li><a href="#_parameter_reference">Parameter reference</a></li>
 <li><a href="#_send_us_feedback">Send us feedback</a></li>
 <li><a href="#_quick_start_reference_deployments">Quick Start reference deployments</a></li>
 <li><a href="#_github_repository">GitHub repository</a></li>
@@ -858,7 +857,7 @@ p.footer-text a{color:#d7d8d8}
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<h2 id="_net_cicd_pipeline_with_delivery_to_aws_fargate_on_the_aws_cloud" class="discrete text-center">.NET CI/CD pipeline with delivery to AWS Fargate on the AWS Cloud</h2>
+<h2 id="_net_core_cicd_pipeline_with_delivery_to_aws_fargate_on_the_aws_cloud" class="discrete text-center">.NET Core CI/CD pipeline with delivery to AWS Fargate on the AWS Cloud</h2>
 <h2 id="_quick_start_reference_deployment" class="discrete text-left text-center">Quick Start Reference Deployment</h2>
 <div class="imageblock text-center">
 <div class="content">
@@ -866,7 +865,7 @@ p.footer-text a{color:#d7d8d8}
 </div>
 </div>
 <div class="paragraph text-center">
-<p><strong>11 2021</strong><br>
+<p><strong>January 2022</strong><br>
 <em>Andy Hopper, AWS Microsoft Specialist SA Team</em></p>
 </div>
 <div class="admonitionblock tip text-left">
@@ -891,18 +890,18 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide provides instructions for deploying the .NET CI/CD pipeline with delivery to AWS Fargate Quick Start reference architecture on the AWS Cloud.</p>
+<p>This guide provides instructions for deploying the .NET Core CI/CD pipeline with delivery to AWS Fargate Quick Start reference architecture on the AWS Cloud.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start is for users who are interested in creating a Continuous Integration/Continuous Deployment (CI/CD) pipeline for a .NET application in their AWS environment using AWS' portfolio of DevOps services. This Quick Start follows best practices to create a CI/CD pipeline that automatically builds and deploys a .NET application to AWS Fargate. This Quick Start can be used as both a reference architecture as well as a template for creating a fully-implemented CI/CD pipeline for deployment of a .NET application to Fargate by uploading the application&#8217;s source code to the code repository created by the Quick Start.</p>
+<p>This Quick Start is for users who want to create a continuous integration and continuous deployment (CI/CD) pipeline for a .NET application in their AWS environment using the AWS portfolio of DevOps services. This Quick Start follows best practices to create a CI/CD pipeline that automatically builds and deploys a .NET application to Fargate. You can use this Quick Start as both a reference architecture and a template for creating a fully implemented CI/CD pipeline for deploying a .NET application to Fargate. To deploy the application to Fargate, you upload the application&#8217;s source code to the code repository created by the Quick Start.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_net_cicd_pipeline_with_delivery_to_aws_fargate_on_aws">.NET CI/CD pipeline with delivery to AWS Fargate on AWS</h2>
+<h2 id="_net_core_cicd_pipeline_with_delivery_to_aws_fargate_on_aws">.NET Core CI/CD pipeline with delivery to AWS Fargate on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start deploys a complete CI/CD pipeline that uses AWS' portfolio of DevOps services to build and deploy a containerized .NET application. The Quick Start also demonstrates the use of AWS Fargate to host a containerized application using fully-managed AWS infrastructure.</p>
+<p>This Quick Start deploys a complete CI/CD pipeline that uses the AWS portfolio of DevOps services to build and deploy a containerized .NET application. The Quick Start also demonstrates how to use Fargate to host a containerized application using a fully managed AWS infrastructure.</p>
 </div>
 </div>
 </div>
@@ -946,14 +945,14 @@ After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/aw
 <div class="sectionbody">
 <div class="paragraph">
 <p>Deploying this Quick Start for a new virtual private cloud (VPC) with
-default parameters builds the following .NET CI/CD pipeline with delivery to AWS Fargate environment in the
+default parameters builds the following .NET Core CI/CD pipeline with delivery to AWS Fargate environment in the
 AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
-<img src="images/architecture_diagram.png" alt="Architecture">
+<img src="images/dotnetcore-fargate-cicd-architecture-diagram.png" alt="Architecture">
 </div>
-<div class="title">Figure 1. Quick Start architecture for .NET CI/CD pipeline with delivery to AWS Fargate on AWS</div>
+<div class="title">Figure 1. Quick Start architecture for .NET Core CI/CD pipeline with delivery to AWS Fargate on AWS</div>
 </div>
 <div class="paragraph">
 <p>As shown in <a href="#architecture1">Figure 1</a>, the Quick Start sets up the following:</p>
@@ -968,47 +967,43 @@ AWS Cloud.</p>
 best practices, to provide you with your own virtual network on AWS.</p>
 </li>
 <li>
-<p>In the public subnets:</p>
+<p>AWS CodePipeline to create a pipeline with source, build, and deploy stages. The pipeline is invoked when a developer commits a code change to the CodeCommit repository.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed network address translation (NAT) gateways to allow outbound
-internet access for resources in the private subnets.</p>
+<p>AWS CodeCommit to host the application source code in a Git repository.</p>
+</li>
+<li>
+<p>AWS CodeBuild to serve as a CodePipeline stage for performing the build process for a container image.</p>
+</li>
+<li>
+<p>Amazon Elastic Container Service (Amazon ECS) to deploy the updated application container image.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Amazon Simple Storage Service (Amazon S3) to store AWS CodePipeline artifacts.</p>
+</li>
+<li>
+<p>AWS Identity and Access Management (IAM) roles for the CI/CD pipeline&#8217;s build and deployment process.</p>
+</li>
+<li>
+<p>In the public subnets, managed network address translation (NAT) gateways to allow outbound
+internet access for resources in the private subnets.</p>
 </li>
 <li>
 <p>In the private subnets:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>An Amazon Elastic Container Service (ECS) service using AWS Fargate to host the containers.</p>
+<p>AWS Fargate tasks to host the containers using Amazon ECS.</p>
+</li>
+<li>
+<p>An Application Load Balancer to direct traffic to the Fargate cluster.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>An implementation of a CI/CD pipeline using AWS DevOps services:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>An AWS CodeCommit code repository to host application source code.</p>
-</li>
-<li>
-<p>An AWS CodePipeline build orchestration pipeline that automatically triggers a build process when changes are pushed to the code repository.</p>
-</li>
-<li>
-<p>A CodePipeline stage that performs the build process for a container image using AWS CodeBuild.</p>
-</li>
-<li>
-<p>A CodePipeline stage that deploys the updated application container image to the ECS service.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>AWS Identity and Access Management roles for the CI/CD pipeline&#8217;s build and deployment process.</p>
 </li>
 </ul>
 </div>
@@ -1026,7 +1021,7 @@ and <a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AW
 deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </div>
 <div class="paragraph">
-<p>While this Quick Start demonstrates the steps necessary to deploy containerized applications to AWS Fargate, the Quick Start does assume familiarity with <a href="https://dotnet.microsoft.com/">.NET</a> and how to build containerized applications using <a href="https://docs.docker.com/develop/develop-images/multistage-build/">Docker multi-stage builds</a>.</p>
+<p>Even though this Quick Start provides the required steps to deploy containerized applications to Fargate, you should be familiar with <a href="https://dotnet.microsoft.com/" target="_blank" rel="noopener">.NET</a> and how to build containerized applications using <a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener">Docker multi-stage builds</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1161,7 +1156,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="sect3">
 <h4 id="_deployment_options">Deployment options</h4>
 <div class="paragraph">
-<p>This Quick Start builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys .NET CI/CD pipeline with delivery to AWS Fargate into this new VPC. For further detail on resources this Quick Start deploys, see the <a href="#_architecture">Architecture</a> section.</p>
+<p>This Quick Start builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys .NET Core CI/CD pipeline with delivery to AWS Fargate into this new VPC. For more details about the resources this Quick Start deploys, see the <a href="#_architecture">Architecture</a> section.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1181,7 +1176,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For details, see <a href="#_planning_the_deployment">Planning the deployment</a> earlier in this guide.</p>
+<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For details, see <a href="#_planning_the_deployment">Planning the deployment</a> in this guide.</p>
 </li>
 <li>
 <p>Ensure that your AWS account is configured correctly, as discussed in the <a href="#_technical_requirements">Technical requirements</a> section.</p>
@@ -1198,7 +1193,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing VPC, ensure that your VPC has two private subnets in different Availability Zones for the workload instances and that the subnets are not shared. This Quick Start does not support <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html" target="_blank" rel="noopener">shared subnets</a>. The subnets require <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html" target="_blank" rel="noopener">NAT gateways</a> in their route tables to allow the instances to download packages and software without exposing the instances to the internet. Also ensure that the domain name in the DHCP options is configured, as explained in <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html" target="_blank" rel="noopener">DHCP options sets</a>. Provide your VPC settings when you launch the Quick Start.
+If you deploy .NET Core CI/CD pipeline with delivery to AWS Fargate into an existing VPC, ensure that your VPC has two private subnets in different Availability Zones for the workload instances and that the subnets are not shared. This Quick Start does not support <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html" target="_blank" rel="noopener">shared subnets</a>. The subnets require <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html" target="_blank" rel="noopener">NAT gateways</a> in their route tables to allow the instances to download packages and software without exposing the instances to the internet. Also ensure that the domain name in the DHCP options is configured, as explained in <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html" target="_blank" rel="noopener">DHCP options sets</a>. Provide your VPC settings when you launch the Quick Start.
 </td>
 </tr>
 </table>
@@ -1209,19 +1204,7 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account, and choose one of the following options to launch the AWS CloudFormation template. For help with choosing an option, see <a href="#_deployment_options">Deployment options</a> earlier in this guide.</p>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 75%;">
-<col style="width: 25%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy .NET CI/CD pipeline with delivery to AWS Fargate into a new VPC on AWS</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_template_permalink" target="_blank" rel="noopener">View template</a></p></td>
-</tr>
-</tbody>
-</table>
+<p>Sign in to your AWS account, and launch the following AWS CloudFormation template: <a href="https://fwd.aws/4VPBv?" target="_blank" rel="noopener">Deploy .NET Core CI/CD pipeline with delivery to AWS Fargate into a new VPC on AWS</a>. You can also <a href="https://fwd.aws/j37eE?" target="_blank" rel="noopener">view the template</a>.</p>
 </li>
 <li>
 <p>Check the AWS Region that&#8217;s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the us-east-1 Region by default. For more information, see <a href="#_supported_aws_regions">Supported AWS Regions</a> earlier in this guide.</p>
@@ -1230,7 +1213,7 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 <p>On the <strong>Create stack</strong> page, keep the default setting for the template URL, and then choose <strong>Next</strong>.</p>
 </li>
 <li>
-<p>On the <strong>Specify stack details</strong> page, change the stack name if needed. Review the parameters for the template. Provide values for the parameters that require input. For all other parameters, review the default settings and customize them as necessary. For details on each parameter, see the <a href="#_parameter_reference">Parameter reference</a> section of this guide. When you finish reviewing and customizing the parameters, choose <strong>Next</strong>.</p>
+<p>On the <strong>Specify stack details</strong> page, change the stack name if needed. Review the parameters for the template. Provide values for the parameters that require input. For all other parameters, review the default settings and customize them as necessary.  When you finish reviewing and customizing the parameters, choose <strong>Next</strong>.</p>
 </li>
 <li>
 <p>On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you finish, choose <strong>Next</strong>.</p>
@@ -1242,7 +1225,7 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 <p>Choose <strong>Create stack</strong> to deploy the stack.</p>
 </li>
 <li>
-<p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the .NET CI/CD pipeline with delivery to AWS Fargate deployment is ready.</p>
+<p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the .NET Core CI/CD pipeline with delivery to AWS Fargate deployment is ready.</p>
 </li>
 <li>
 <p>To view the created resources, see the values displayed in the <strong>Outputs</strong> tab for the stack.</p>
@@ -1272,11 +1255,11 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RepoUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The URL to use Git when creating a clone of the CodeCommit repository.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL to GitHub for creating a clone of the CodeCommit repository.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">LoadBalancerUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The URL for the application load balancer in front of the Fargate service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL for the Application Load Balancer in front of the Fargate service.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CodePipelineUrl</p></td>
@@ -1285,7 +1268,7 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 </tbody>
 </table>
 <div class="paragraph">
-<p>After deploying this Quick Start, a build of the application will be started. You may use your browser to navigate to the CodePipeline URL to observe the build process, and after the build completes you may navigate to the load balancer URL to view the application in your browser.</p>
+<p>After deploying this Quick Start, a build of the application starts. You can use your browser to navigate to the CodePipeline URL to monitor the build process. After the build completes, you can navigate to the Application Load Balancer URL to view the application in your browser.</p>
 </div>
 </div>
 </div>
@@ -1293,7 +1276,7 @@ If you deploy .NET CI/CD pipeline with delivery to AWS Fargate into an existing 
 <h2 id="_post_deployment_steps">Post-deployment steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you have deployed this Quick Start, you may use the CodeCommit repository URL to clone the repo and make modifications to the application. Any changes pushed to the repository will trigger an execution of the CodePipeline as well as a deployment of the application.</p>
+<p>After you&#8217;ve deployed this Quick Start, you can use the CodeCommit repository URL to clone the repo and make modifications to the application. When you push changes to the repo, the CodePipeline pipeline is triggered, and the application deployes.</p>
 </div>
 </div>
 </div>
@@ -1334,7 +1317,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <h2 id="_troubleshooting">Troubleshooting</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start uses CloudFormation to deploy an application using a IAM role created by the Quick Start template. When deleting the stack created by launching this Quick Start&#8217;s template, it is important to first delete the deployed application stack in order to avoid an error due to this IAM role having been deleted.</p>
+<p>This Quick Start uses CloudFormation to deploy an application using a IAM role created by the Quick Start template. When deleting the stack created by launching this Quick Start&#8217;s template, delete the deployed application first to avoid an error caused by the deleted IAM role.</p>
 </div>
 </div>
 </div>
@@ -1343,23 +1326,6 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <div class="sectionbody">
 <div class="paragraph">
 <p>After you successfully deploy this Quick Start, confirm that your resources and services are updated and configured — including any required patches — to meet your security and other needs. For more information, see the <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener">AWS Shared Responsibility Model</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_parameter_reference">Parameter reference</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Unless you are customizing the Quick Start templates for your own deployment projects, keep the default settings for the parameters labeled <strong>Quick Start S3 bucket name</strong>, <strong>Quick Start S3 bucket Region</strong>, and <strong>Quick Start S3 key prefix</strong>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -1404,15 +1370,8 @@ and to share your customizations with others.</p>
 </div>
 <p class="footer-text">
 <!-- We can use document attributes: -->
-<!-- Generated with Asciidoctor v2.0.16. -->
+<!-- Generated with Asciidoctor v2.0.15. -->
 <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2021, Amazon Web Services, Inc. or its affiliates. All rights reserved.
 </p>
 </body>
 </html>
-<!--
-repo commit:
-869f73290b15cfc2dae8f2d5b181756cdd808045
-
-submodule config:
- eea042d0b9c005d2549a71349e5f28b02c81af75 docs/boilerplate (remotes/origin/cdk-13-geea042d)
--->
